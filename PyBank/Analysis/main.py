@@ -60,3 +60,4 @@ print("Total: $" + str(total))
 print("Greatest Increase in Profits:", greatest_increase_month, "($" + str(greatest_increase) + ")")
 
 print("Greatest Decrease in Profits:", greatest_decrease_month, "($" + str(greateat_decrease) + ")")
+
