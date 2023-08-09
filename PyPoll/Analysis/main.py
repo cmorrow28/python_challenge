@@ -41,8 +41,8 @@ with open(election_data, 'r') as csvfile: #opening csv file to read the data
     }
     #create a variable that locates the winner
     winner = (candidate_list.get(max(candidate_list)))
-
-print(f"""
+    
+output = (f"""
 Election Results
 ------------------------------
 Total Votes: {total_votes}
@@ -55,6 +55,6 @@ Winner: {winner}
 -------------------------------
 """)
 #----------------------------------------------------------------------------------
-#file = os.path.join('..', 'Analysis', 'text_output.txt')
-#with open(file, 'w') as textfile:
-    #textfile.write(output)
+file = os.path.join('..', 'Analysis', 'text_output.txt')
+with open(file, 'w') as textfile:
+    textfile.write(output)
