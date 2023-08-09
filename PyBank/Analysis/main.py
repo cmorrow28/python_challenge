@@ -43,8 +43,8 @@ Financial Analysis
 Total Months: {total_months + 1}
 Total: ${total_profit + int(row[1])}
 Average Change: ${(total_change / total_months):.2f}
-Greatest Increase in Profits: max_month ${max_value}
-Greatest Increase in Profits: lowest_month ${lowest_value}
+Greatest Increase in Profits: {max_month} ${max_value}
+Greatest Increase in Profits: {lowest_month} ${lowest_value}
 """
 #----------------------------------------------------------------------------------
 file = os.path.join('..', 'Analysis', 'text_output.txt')
