@@ -3,61 +3,50 @@ import csv
 
 budget_csv = os.path.join('..', 'Resources', 'budget_data.csv')
 
-months_list = []
-total = 0
+#defining my variables
+total_months = 0
+total_profit = 0
+total_change = 0
+max_value = 0
+max_month = ("")
+lowest_value = 0
+lowest_month = ("")
 
-#total_profit_loss = 0
-#change = []
-#number_rows = 0
-greatest_increase = 0
-greatest_increase_month = ""
-greateat_decrease = 0
-greatest_decrease_month = ""
-
-with open(budget_csv, 'r') as csvfile:
+with open(budget_csv, 'r') as csvfile: #opening the csv file to read the data
     csv_reader = csv.reader(csvfile)
 
-    header = next(csv_reader)
-    prev_value_i = False
-    prev_value_d = False
+    header = next(csv_reader) #skipping data in header row and storing it as a variable
+    first_row = next(csv_reader) #skipping first row of data and storing as a variable (for change calculation)
 
-    for row in csv_reader:
-        total += int(row[1])
-        month = row[0]
-        if month not in months_list:
-            months_list.append(month)
-        
-        #profit_losses = int(row[1])
-        #number_rows += 1
-        #total_profit_loss += profit_losses
+    previous_value = int(first_row[1]) #defining previous_value as the first row of coloumn 2
 
-        current_value = int(row[1])
-
-        if prev_value_i is not False:
-            change_i = current_value - prev_value_i
-            if change_i > greatest_increase:
-                greatest_increase = change_i
-                greatest_increase_month = month
-        prev_value_i = current_value
-
-        if prev_value_d is not False:
-            change_d = current_value - prev_value_d
-            if change_d < greateat_decrease:
-                greateat_decrease = change_d
-                greatest_decrease_month = month
-        prev_value_d = current_value
-
-print("Financial Analysis")
-print("------------------------------")
-
-month_count = len(months_list)
-print("Total Months:", month_count)
-
-print("Total: $" + str(total))
-
-#average_change = (total_profit_loss / month_count)
-#print("Average Change: " + str(average_change))
-print("Greatest Increase in Profits:", greatest_increase_month, "($" + str(greatest_increase) + ")")
-
-print("Greatest Decrease in Profits:", greatest_decrease_month, "($" + str(greateat_decrease) + ")")
-
+    for row in csv_reader: #read through the data in the csv file row by row
+       #calculate total months
+        total_months += 1
+        total_profit += previous_value
+       #calculate total profits
+        changes = int(row[1]) - previous_value
+        previous_value = int(row[1])
+        total_change += changes
+       #calculate greatest increase value
+        if changes > max_value:
+            max_value = changes
+            max_month = row[0]
+        #calculate greatest decrease value
+        if changes < lowest_value:
+            lowest_value = changes
+            lowest_month = row[0]      
+#---------------------------------------------------------------------------------
+output = f"""
+Financial Analysis
+------------------------------
+Total Months: {total_months + 1}
+Total: ${total_profit + int(row[1])}
+Average Change: ${(total_change / total_months):.2f}
+Greatest Increase in Profits: max_month ${max_value}
+Greatest Increase in Profits: lowest_month ${lowest_value}
+"""
+#----------------------------------------------------------------------------------
+file = os.path.join('..', 'Analysis', 'text_output.txt')
+with open(file, 'w') as textfile:
+    textfile.write(output)
