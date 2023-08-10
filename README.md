@@ -10,5 +10,7 @@ My coding came from the coursework that was provided and extension research on t
 But I had another student explain to me that the code you use has to make sense to me, which was what I was struggling with
 Once she helped me work out a way that I could visually see the code working, my process of producing the right code came so much more intuitively.
 
+My main.py files both live in my Analysis folders, and I can't work out how to move the file out of the folder.
+
 I think this challenge helped me in realising that I am starting to understand what we talk about in class, and it just requires me to think about processes differently...
-Which is not something that comes easily to me - but personal growth is always good as they say
+This is not something that comes easily to me - but personal growth is always good, as they say. 
