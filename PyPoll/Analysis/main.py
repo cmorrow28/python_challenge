@@ -42,7 +42,7 @@ with open(election_data, 'r') as csvfile: #opening csv file to read the data
     #create a variable that locates the winner
     winner = (candidate_list.get(max(candidate_list)))
     
-output = (f"""
+output = print(f"""
 Election Results
 ------------------------------
 Total Votes: {total_votes}
