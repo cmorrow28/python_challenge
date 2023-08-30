@@ -37,7 +37,7 @@ with open(budget_csv, 'r') as csvfile: #opening the csv file to read the data
             lowest_value = changes
             lowest_month = row[0]      
 #---------------------------------------------------------------------------------
-output = f"""
+output = print(f"""
 Financial Analysis
 ------------------------------
 Total Months: {total_months + 1}
@@ -45,7 +45,7 @@ Total: ${total_profit + int(row[1])}
 Average Change: ${(total_change / total_months):.2f}
 Greatest Increase in Profits: {max_month} ${max_value}
 Greatest Increase in Profits: {lowest_month} ${lowest_value}
-"""
+""")
 #----------------------------------------------------------------------------------
 file = os.path.join('..', 'Analysis', 'text_output.txt')
 with open(file, 'w') as textfile:
